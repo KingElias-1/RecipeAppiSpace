@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navig"
+    app:startDestination="@id/allRecipeFragment">
+
+    <fragment
+        android:id="@+id/allRecipeFragment"
+        android:name="com.hgecapsi.recipeapp.views.fragments.AllRecipeFragment"
+        android:label="fragment_all_recipe"
+        tools:layout="@layout/fragment_all_recipe" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.hgecapsi.recipeapp.views.fragments.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.hgecapsi.recipeapp.views.fragments.DiscoverFragment"
+        android:label="fragment_discover"
+        tools:layout="@layout/fragment_discover" />
+</navigation>
