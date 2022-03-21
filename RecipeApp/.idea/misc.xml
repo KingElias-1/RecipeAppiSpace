@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/add_dish.xml" value="0.248" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/add_photo.xml" value="0.261" />
+        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/edit.xml" value="0.1245" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/ic_baseline_directions_boat_24.xml" value="0.1065" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/use_cam.xml" value="0.261" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/use_gallery.xml" value="0.261" />
