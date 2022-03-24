@@ -77,6 +77,8 @@ class AddDishActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         addDishBinding.etType.setOnClickListener(this)
+        addDishBinding.etCategory.setOnClickListener(this)
+        addDishBinding.etCookingTime.setOnClickListener(this)
 
     }
 
