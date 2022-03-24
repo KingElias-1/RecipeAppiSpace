@@ -13,11 +13,13 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -26,7 +28,10 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.hgecapsi.recipeapp.R
 import com.hgecapsi.recipeapp.databinding.ActivityAddDishBinding
+import com.hgecapsi.recipeapp.databinding.DialogCustomListBinding
 import com.hgecapsi.recipeapp.databinding.PickDishImgBinding
+import com.hgecapsi.recipeapp.views.adapters.CustomListItemAdapter
+import com.hgecapsi.recipeapp.views.utils.Constants
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -42,7 +47,7 @@ import java.io.OutputStream
 import java.util.*
 
 
-class AddDishActivity : AppCompatActivity() {
+class AddDishActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var addDishBinding: ActivityAddDishBinding //time to start differentiating binding variables
 
@@ -55,6 +60,9 @@ class AddDishActivity : AppCompatActivity() {
     // global variable fr storing img path
     private var _imgPath: String = ""
 
+    private lateinit var mCustomListDialog: Dialog
+
+    private lateinit var CustomDialogbinding: DialogCustomListBinding // dialog for custom list dropdown layout (dialog_custom_list.xml)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +74,76 @@ class AddDishActivity : AppCompatActivity() {
 
         addDishBinding.ivAddDishImage.setOnClickListener{
             openCameraOrGalleryDialog()
+        }
+
+        addDishBinding.etType.setOnClickListener(this)
+
+    }
+
+    override fun onClick(view: View) {
+        when (view.id){
+            R.id.et_type -> {
+                customItemsListDialog(resources.getString(R.string.title_select_dish_type),
+                    Constants.dishTypes(),
+                    Constants.DISH_TYPE
+                )
+                return
+            }
+            R.id.et_category -> {
+                customItemsListDialog(resources.getString(R.string.lbl_category),
+                    Constants.dishCategories(),
+                    Constants.DISH_CATEGORY
+                )
+                return
+            }
+            R.id.et_cooking_time -> {
+                customItemsListDialog(resources.getString(R.string.lbl_cooking_time_in_minutes),
+                    Constants.dishCookTime(),
+                    Constants.DISH_COOKING_TIME
+                )
+                return
+            }
+        }
+    }
+
+    private fun customItemsListDialog(title: String,
+                                      itemList: ArrayList<String>,
+                                      selection: String) {
+        mCustomListDialog = Dialog(this@AddDishActivity)
+        CustomDialogbinding = DialogCustomListBinding.inflate(layoutInflater)
+        mCustomListDialog.setContentView(CustomDialogbinding.root)
+
+        CustomDialogbinding.tvTitle.text = title
+
+        // Set the LayoutManager that this RecyclerView will use.
+        CustomDialogbinding.rvList.layoutManager = LinearLayoutManager(this@AddDishActivity)
+
+        // Adapter class is initialized and list is passed in the param.
+        val adapter = CustomListItemAdapter(this@AddDishActivity, itemList, selection)
+
+        // adapter instance is set to the recyclerview to inflate the items.
+        CustomDialogbinding.rvList.adapter = adapter
+
+        //Start the dialog and display it on screen.
+        mCustomListDialog.show()
+    }
+
+    fun selectedListItem(item: String, selection: String) {
+        when (selection) {
+
+            Constants.DISH_TYPE -> {
+                mCustomListDialog.dismiss()
+                addDishBinding.etType.setText(item)
+            }
+
+            Constants.DISH_CATEGORY -> {
+                mCustomListDialog.dismiss()
+                addDishBinding.etCategory.setText(item)
+            }
+            else -> {
+                mCustomListDialog.dismiss()
+                addDishBinding.etCookingTime.setText(item)
+            }
         }
     }
 
@@ -253,6 +331,8 @@ class AddDishActivity : AppCompatActivity() {
             }.show()
     }
 
+
+
     companion object{
         const val CAMERA = 100
 
@@ -260,4 +340,5 @@ class AddDishActivity : AppCompatActivity() {
 
         const val IMAGE_DIRECTORY = "DishImage"
     }
+
 }
