@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -76,34 +77,110 @@ class AddDishActivity : AppCompatActivity(), View.OnClickListener {
             openCameraOrGalleryDialog()
         }
 
-        addDishBinding.etType.setOnClickListener(this)
-        addDishBinding.etCategory.setOnClickListener(this)
-        addDishBinding.etCookingTime.setOnClickListener(this)
+        //onclick listeners made for clickables in the layout
+        addDishBinding.etType.setOnClickListener(this@AddDishActivity)
+        addDishBinding.etCategory.setOnClickListener(this@AddDishActivity)
+        addDishBinding.etCookingTime.setOnClickListener(this@AddDishActivity)
+        addDishBinding.btnAddDish.setOnClickListener(this@AddDishActivity)
 
     }
 
+    //onclick function override to prevent large blocks of code for each on click listener
     override fun onClick(view: View) {
-        when (view.id){
+        when (view.id) {
             R.id.et_type -> {
-                customItemsListDialog(resources.getString(R.string.title_select_dish_type),
+                customItemsListDialog(
+                    resources.getString(R.string.title_select_dish_type),
                     Constants.dishTypes(),
                     Constants.DISH_TYPE
                 )
                 return
             }
             R.id.et_category -> {
-                customItemsListDialog(resources.getString(R.string.lbl_category),
+                customItemsListDialog(
+                    resources.getString(R.string.lbl_category),
                     Constants.dishCategories(),
                     Constants.DISH_CATEGORY
                 )
                 return
             }
             R.id.et_cooking_time -> {
-                customItemsListDialog(resources.getString(R.string.lbl_cooking_time_in_minutes),
+                customItemsListDialog(
+                    resources.getString(R.string.lbl_cooking_time_in_minutes),
                     Constants.dishCookTime(),
                     Constants.DISH_COOKING_TIME
                 )
                 return
+            }
+            R.id.btn_add_dish -> {
+                // Define the local variables and get the EditText values.
+                // For Dish Image we have the global variable defined already.
+
+                val title = addDishBinding.etTitle.text.toString()
+                    .trim { it <= ' ' }//trim removes empty whitespace can also use trim()
+                val type = addDishBinding.etType.text.toString().trim { it <= ' ' }
+                val category = addDishBinding.etCategory.text.toString().trim { it <= ' ' }
+                val ingredients = addDishBinding.etIngredients.text.toString().trim { it <= ' ' }
+                val cookingTimeInMinutes =
+                    addDishBinding.etCookingTime.text.toString().trim { it <= ' ' }
+                val cookingDirection =
+                    addDishBinding.etDirectionToCook.text.toString().trim { it <= ' ' }
+
+                when {
+
+                    TextUtils.isEmpty(_imgPath) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_select_dish_image),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    TextUtils.isEmpty(title) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_enter_dish_title),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    TextUtils.isEmpty(type) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_select_dish_type),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    TextUtils.isEmpty(category) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_select_dish_category),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    TextUtils.isEmpty(ingredients) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_enter_dish_ingredients),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    TextUtils.isEmpty(cookingTimeInMinutes) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_select_dish_cooking_time),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    TextUtils.isEmpty(cookingDirection) -> {
+                        Toast.makeText(
+                            this@AddDishActivity,
+                            resources.getString(R.string.err_msg_enter_dish_cooking_instructions),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }
         }
     }

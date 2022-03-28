@@ -16,4 +16,11 @@
     <string name="lbl_camera">Camera</string>
     <string name="lbl_gallery">Gallery</string>
     <string name="title_select_dish_type">Select Dish Type</string>
+    <string name="err_msg_select_dish_image">Please select dish image</string>
+    <string name="err_msg_enter_dish_title">Please enter dish name</string>
+    <string name="err_msg_select_dish_type">Please select a dish type</string>
+    <string name="err_msg_select_dish_category">Please select a dish category</string>
+    <string name="err_msg_enter_dish_ingredients">Please enter the dish ingredients</string>
+    <string name="err_msg_select_dish_cooking_time">Please specify the cooking time</string>
+    <string name="err_msg_enter_dish_cooking_instructions">Enter dish cooking instructions.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.hgecapsi.recipeapp.views.models.entities
+package com.hgecapsi.recipeapp.views.models.data
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
