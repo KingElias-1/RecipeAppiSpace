@@ -3,6 +3,7 @@ package com.hgecapsi.recipeapp.views.models.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.hgecapsi.recipeapp.views.models.data.RecipeData
 import kotlinx.coroutines.flow.Flow
 
@@ -43,6 +44,27 @@ interface DishDao {
      * like network requests, database calls, or other async code.
      * It supports coroutines throughout its API, so you can transform a flow using coroutines as well!
      */
+
+    // TODO Step 1: Create a suspend function to update the dish details.
+    // START
+    /**
+     * A function to update favorite dish details to the local database using Room.
+     *
+     * @param favDish - Here we will pass the entity class that we have created with updated details along with "id".
+     */
+    @Update
+    suspend fun updateFavDishDetails(recipeData: RecipeData)
+    // END
+
+    // TODO Step 1: Create a function to get the list of favorite dishes from the database.
+    // START
+    /**
+     * SQLite does not have a boolean data type. Room maps it to an INTEGER column, mapping true to 1 and false to 0.
+     */
+    @Query("SELECT * FROM FAV_DISHES_TABLE WHERE favorite_dish = 1")
+    fun getFavoriteDishesList(): Flow<List<RecipeData>>
+    // END
+
     @Query("SELECT * FROM FAV_DISHES_TABLE ORDER BY ID")
     fun getAllDishesList(): Flow<List<RecipeData>>
     // END

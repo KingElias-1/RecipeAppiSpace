@@ -7,19 +7,22 @@
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/add_photo.xml" value="0.261" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/edit.xml" value="0.1245" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/ic_baseline_directions_boat_24.xml" value="0.1065" />
+        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/ic_more.xml" value="0.2505" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/use_cam.xml" value="0.261" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/drawable/use_gallery.xml" value="0.261" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/activity_add_dish.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/activity_intro.xml" value="0.23958333333333334" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/dialog_custom_list.xml" value="0.41770833333333335" />
-        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/fragment_all_recipe.xml" value="0.21197916666666666" />
+        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/fragment_all_recipe.xml" value="0.40960163432073543" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/fragment_discover.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/fragment_favorite.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/item_custom_list_layout.xml" value="0.40960163432073543" />
+        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/item_dish_layout.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/layout/pick_dish_img.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/menu/all_recipe_menu.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.41770833333333335" />
+        <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/menu/menu_adapter.xml" value="0.41770833333333335" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1515" />
         <entry key="..\:/Documents/GitHub/RecipeAppiSpace/RecipeApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1515" />
       </map>

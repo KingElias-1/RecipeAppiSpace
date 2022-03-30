@@ -24,6 +24,27 @@ class FavDishViewModel(private val dishRepository: DishRepository):ViewModel() {
      */
     val allDishesList: LiveData<List<RecipeData>> = dishRepository.allDishesList.asLiveData()
     // END
+
+    // TODO Step 3: Get the list of favorite dishes that we can populate in the UI.
+    // START
+    // Get the list of favorite dishes that we can populate in the UI.
+    /** Using LiveData and caching what favoriteDishes returns has several benefits:
+     * We can put an observer on the data (instead of polling for changes) and only
+     * update the UI when the data actually changes.
+     * Repository is completely separated from the UI through the ViewModel.
+     */
+    val favoriteDishes: LiveData<List<RecipeData>> = dishRepository.favoriteDishes.asLiveData()
+    // END
+
+    // TODO Step 3: Create a function to Update and pass the required params.
+// START
+    /**
+     * Launching a new coroutine to update the data in a non-blocking way
+     */
+    fun update(recipeData: RecipeData) = viewModelScope.launch {
+        dishRepository.updateFavDishData(recipeData)
+    }
+// END
 }
 
 /**

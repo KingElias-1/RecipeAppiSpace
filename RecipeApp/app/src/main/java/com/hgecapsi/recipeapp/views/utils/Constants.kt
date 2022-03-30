@@ -8,6 +8,8 @@ object Constants {
         const val DISH_IMAGE_SOURCE_LOCAL: String = "Local"
         const val DISH_IMAGE_SOURCE_ONLINE: String = "Online"
 
+        const val EXTRA_DISH_DETAILS: String = "DishDetails"
+
         /**
          * This function will return the Dish Type List items.
          */
@@ -65,4 +67,28 @@ object Constants {
             list.add("180")
             return list
         }
+
+    // TODO Step 2: Define the API key and query param of the URL as that we are going to use in the URL to get the response.
+    // START
+    // TODO Step 2: Add the BASE URL of the API.
+    // START
+    const val BASE_URL = "https://api.spoonacular.com/"
+    // END
+    // TODO Step 5: Add the default values to the constants.
+    // START
+    // KEY PARAMS VALUES ==> YOU CAN CHANGE AS PER REQUIREMENT FROM HERE TO MAKE THE DIFFERNCE IN THE API RESPONSE.
+    const val LIMIT_LICENSE_VALUE: Boolean = true
+    const val TAGS_VALUE: String = "vegetarian, dessert"
+    const val NUMBER_VALUE: Int = 3
+    // END
+    const val API_ENDPOINT:String = "recipes/random"
+
+    // API KEY VALUE from the spoonacular console.
+    const val API_KEY_VALUE: String = "f6b01f9931d947c3a939ec1042de82cb"
+
+    // KEY PARAMS
+    const val API_KEY: String = "apiKey"
+    const val LIMIT_LICENSE: String = "limitLicense"
+    const val TAGS: String = "tags"
+    const val NUMBER: String = "number"
 }
