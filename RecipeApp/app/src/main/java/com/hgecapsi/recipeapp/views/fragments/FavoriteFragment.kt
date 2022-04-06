@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import com.hgecapsi.recipeapp.application.FavDishApplication
 import com.hgecapsi.recipeapp.databinding.FragmentFavoriteBinding
-import com.hgecapsi.recipeapp.views.adapters.FavDishAdapter
-import com.hgecapsi.recipeapp.views.application.FavDishApplication
-import com.hgecapsi.recipeapp.views.viewmodel.FavDishViewModel
-import com.hgecapsi.recipeapp.views.viewmodel.FavDishViewModelFactory
+import com.hgecapsi.recipeapp.viewmodel.FavDishViewModel
+import com.hgecapsi.recipeapp.viewmodel.FavDishViewModelFactory
+import com.hgecapsi.recipeapp.views.activities.MainActivity
 
 
 class FavoriteFragment : Fragment() {
@@ -42,38 +41,21 @@ class FavoriteFragment : Fragment() {
         return favoriteFragmentBinding!!.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        /**
-         * Add an observer on the LiveData returned by getFavoriteDishesList.
-         * The onChanged() method fires when the observed data changes and the activity is in the foreground.
-         */
-        mFavDishViewModel.favoriteDishes.observe(viewLifecycleOwner) { dishes ->
-            dishes.let {
 
-                // TODO Step 5: Remove the Logs and display the list of Favorite Dishes using RecyclerView. Here we will not create a separate adapter class we cas use the same that we have created for AllDishes.
-                // START
+    // TODO Step 5: Override the onResume function to show the BottomNavigationView when the fragment is completely loaded.
+    // START
+    override fun onResume() {
+        super.onResume()
 
-                // Set the LayoutManager that this RecyclerView will use.
-                favoriteFragmentBinding!!.rvFavoriteDishesList.layoutManager =
-                    GridLayoutManager(requireActivity(), 2)
-                // Adapter class is initialized and list is passed in the param.
-                val adapter = FavDishAdapter(this@FavoriteFragment)
-                // adapter instance is set to the recyclerview to inflate the items.
-                favoriteFragmentBinding!!.rvFavoriteDishesList.adapter = adapter
-
-                if (it.isNotEmpty()) {
-                    favoriteFragmentBinding!!.rvFavoriteDishesList.visibility = View.VISIBLE
-                    favoriteFragmentBinding!!.tvNoFavoriteDishesAvailable.visibility = View.GONE
-
-                    adapter.dishesList(it)
-                } else {
-                    favoriteFragmentBinding!!.rvFavoriteDishesList.visibility = View.GONE
-                    favoriteFragmentBinding!!.tvNoFavoriteDishesAvailable.visibility = View.VISIBLE
-                }
-                // END
-
-            }
+        if (requireActivity() is MainActivity) {
+            (activity as MainActivity?)!!.showBottomNavigationView()
         }
+    }
+    // END
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        favoriteFragmentBinding = null
     }
 }

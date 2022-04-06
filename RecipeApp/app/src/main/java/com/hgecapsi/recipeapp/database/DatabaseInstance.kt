@@ -1,10 +1,10 @@
-package com.hgecapsi.recipeapp.views.models.database
+package com.hgecapsi.recipeapp.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.hgecapsi.recipeapp.views.models.data.RecipeData
+import com.hgecapsi.recipeapp.data.RecipeData
 
 @Database(entities = [RecipeData::class], version = 1)
 abstract class DatabaseInstance: RoomDatabase() {

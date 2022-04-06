@@ -1,7 +1,7 @@
-package com.hgecapsi.recipeapp.views.models.database
+package com.hgecapsi.recipeapp.database
 
 import androidx.annotation.WorkerThread
-import com.hgecapsi.recipeapp.views.models.data.RecipeData
+import com.hgecapsi.recipeapp.data.RecipeData
 import kotlinx.coroutines.flow.Flow
 
 class DishRepository(private val dishDao: DishDao) {

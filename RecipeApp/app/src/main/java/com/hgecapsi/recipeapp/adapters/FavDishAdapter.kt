@@ -1,4 +1,4 @@
-package com.hgecapsi.recipeapp.views.adapters
+package com.hgecapsi.recipeapp.adapters
 
 import android.content.Intent
 import android.util.Log
@@ -12,8 +12,8 @@ import com.hgecapsi.recipeapp.R
 import com.hgecapsi.recipeapp.databinding.ItemDishLayoutBinding
 import com.hgecapsi.recipeapp.views.activities.AddDishActivity
 import com.hgecapsi.recipeapp.views.fragments.AllRecipeFragment
-import com.hgecapsi.recipeapp.views.models.data.RecipeData
-import com.hgecapsi.recipeapp.views.utils.Constants
+import com.hgecapsi.recipeapp.data.RecipeData
+import com.hgecapsi.recipeapp.utils.Constants
 
 class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDishAdapter.ViewHolder>() {
     private var dishes: List<RecipeData> = listOf()

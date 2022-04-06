@@ -1,4 +1,4 @@
-package com.hgecapsi.recipeapp.views.utils
+package com.hgecapsi.recipeapp.utils
 
 object Constants {
         const val DISH_TYPE: String = "DishType"
@@ -68,6 +68,7 @@ object Constants {
             return list
         }
 
+    //setting up constants for the api fetch
     // TODO Step 2: Define the API key and query param of the URL as that we are going to use in the URL to get the response.
     // START
     // TODO Step 2: Add the BASE URL of the API.
@@ -78,8 +79,8 @@ object Constants {
     // START
     // KEY PARAMS VALUES ==> YOU CAN CHANGE AS PER REQUIREMENT FROM HERE TO MAKE THE DIFFERNCE IN THE API RESPONSE.
     const val LIMIT_LICENSE_VALUE: Boolean = true
-    const val TAGS_VALUE: String = "vegetarian, dessert"
-    const val NUMBER_VALUE: Int = 3
+    const val TAGS_VALUE: String = "vegetarian,dessert"
+    const val NUMBER_VALUE: Int = 1
     // END
     const val API_ENDPOINT:String = "recipes/random"
 
@@ -87,8 +88,16 @@ object Constants {
     const val API_KEY_VALUE: String = "f6b01f9931d947c3a939ec1042de82cb"
 
     // KEY PARAMS
-    const val API_KEY: String = "apiKey"
+    const val API_KEY: String = "f6b01f9931d947c3a939ec1042de82cb"
     const val LIMIT_LICENSE: String = "limitLicense"
     const val TAGS: String = "tags"
     const val NUMBER: String = "number"
+
+    // END
+    // TODO Step 3: Add the constants that we will use while building the Notification.
+    // START
+    const val NOTIFICATION_ID = "FavDish_notification_id"
+    const val NOTIFICATION_NAME = "FavDish"
+    const val NOTIFICATION_CHANNEL = "FavDish_channel_01"
+    // END
 }

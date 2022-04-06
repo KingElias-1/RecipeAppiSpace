@@ -1,8 +1,8 @@
-package com.hgecapsi.recipeapp.views.application
+package com.hgecapsi.recipeapp.application
 
 import android.app.Application
-import com.hgecapsi.recipeapp.views.models.database.DatabaseInstance
-import com.hgecapsi.recipeapp.views.models.database.DishRepository
+import com.hgecapsi.recipeapp.database.DatabaseInstance
+import com.hgecapsi.recipeapp.database.DishRepository
 
 class FavDishApplication {
     /**

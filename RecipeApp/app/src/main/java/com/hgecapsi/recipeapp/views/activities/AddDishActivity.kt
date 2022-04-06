@@ -29,15 +29,15 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.hgecapsi.recipeapp.R
+import com.hgecapsi.recipeapp.adapters.CustomListItemAdapter
+import com.hgecapsi.recipeapp.application.FavDishApplication
+import com.hgecapsi.recipeapp.data.RecipeData
 import com.hgecapsi.recipeapp.databinding.ActivityAddDishBinding
 import com.hgecapsi.recipeapp.databinding.DialogCustomListBinding
 import com.hgecapsi.recipeapp.databinding.PickDishImgBinding
-import com.hgecapsi.recipeapp.views.adapters.CustomListItemAdapter
-import com.hgecapsi.recipeapp.views.application.FavDishApplication
-import com.hgecapsi.recipeapp.views.models.data.RecipeData
-import com.hgecapsi.recipeapp.views.utils.Constants
-import com.hgecapsi.recipeapp.views.viewmodel.FavDishViewModel
-import com.hgecapsi.recipeapp.views.viewmodel.FavDishViewModelFactory
+import com.hgecapsi.recipeapp.utils.Constants
+import com.hgecapsi.recipeapp.viewmodel.FavDishViewModel
+import com.hgecapsi.recipeapp.viewmodel.FavDishViewModelFactory
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -363,6 +363,7 @@ class AddDishActivity : AppCompatActivity(), View.OnClickListener {
 
                     }
                 }).check()
+
             dialog.dismiss()
         }
 

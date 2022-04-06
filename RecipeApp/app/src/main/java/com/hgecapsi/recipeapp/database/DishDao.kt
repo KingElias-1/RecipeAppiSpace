@@ -1,10 +1,10 @@
-package com.hgecapsi.recipeapp.views.models.database
+package com.hgecapsi.recipeapp.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.hgecapsi.recipeapp.views.models.data.RecipeData
+import com.hgecapsi.recipeapp.data.RecipeData
 import kotlinx.coroutines.flow.Flow
 
 @Dao

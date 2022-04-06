@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hgecapsi.recipeapp.R
 import com.hgecapsi.recipeapp.databinding.FragmentAllRecipeBinding
 import com.hgecapsi.recipeapp.views.activities.AddDishActivity
-import com.hgecapsi.recipeapp.views.adapters.FavDishAdapter
-import com.hgecapsi.recipeapp.views.application.FavDishApplication
-import com.hgecapsi.recipeapp.views.viewmodel.FavDishViewModel
-import com.hgecapsi.recipeapp.views.viewmodel.FavDishViewModelFactory
+import com.hgecapsi.recipeapp.adapters.FavDishAdapter
+import com.hgecapsi.recipeapp.application.FavDishApplication
+import com.hgecapsi.recipeapp.viewmodel.FavDishViewModel
+import com.hgecapsi.recipeapp.viewmodel.FavDishViewModelFactory
 
 
 class AllRecipeFragment : Fragment() {

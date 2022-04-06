@@ -1,4 +1,4 @@
-package com.hgecapsi.recipeapp.views.adapters
+package com.hgecapsi.recipeapp.adapters
 
 import android.app.Activity
 import android.view.LayoutInflater

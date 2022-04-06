@@ -1,8 +1,8 @@
-package com.hgecapsi.recipeapp.views.viewmodel
+package com.hgecapsi.recipeapp.viewmodel
 
 import androidx.lifecycle.*
-import com.hgecapsi.recipeapp.views.models.data.RecipeData
-import com.hgecapsi.recipeapp.views.models.database.DishRepository
+import com.hgecapsi.recipeapp.data.RecipeData
+import com.hgecapsi.recipeapp.database.DishRepository
 import kotlinx.coroutines.launch
 
 class FavDishViewModel(private val dishRepository: DishRepository):ViewModel() {
