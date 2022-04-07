@@ -33,4 +33,5 @@
     <string name="please_wait">please wait...</string>
     <string name="msg_removed_from_favorite">removed from favorites</string>
     <string name="action_share_dish">Share DIsh</string>
+    <string name="no_favorite_dish_added_yet">No Favorite Dish Added Yet</string>
 </resources>

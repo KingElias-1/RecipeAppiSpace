@@ -1,9 +1,6 @@
 package com.hgecapsi.recipeapp.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.hgecapsi.recipeapp.data.RecipeData
 import kotlinx.coroutines.flow.Flow
 
@@ -61,11 +58,34 @@ interface DishDao {
     /**
      * SQLite does not have a boolean data type. Room maps it to an INTEGER column, mapping true to 1 and false to 0.
      */
+
     @Query("SELECT * FROM FAV_DISHES_TABLE WHERE favorite_dish = 1")
     fun getFavoriteDishesList(): Flow<List<RecipeData>>
     // END
 
     @Query("SELECT * FROM FAV_DISHES_TABLE ORDER BY ID")
     fun getAllDishesList(): Flow<List<RecipeData>>
+    // END
+
+    // TODO Step 1: Create a suspend function to delete the dish item from database.
+    // START
+    /**
+     * A function to delete favorite dish details from the local database using Room.
+     *
+     * @param favDish - Here we will pass the entity class with details that we want to delete.
+     */
+    @Delete
+    suspend fun deleteFavDishDetails(recipeData: RecipeData)
+    // END
+
+    // TODO Step 1: Create a function to get the list of dishes based on the dish type from the database.
+    // START
+    /**
+     * A function to get the list of dishes based on the dish type from the database.
+     *
+     * @param filterType - DishType
+     */
+    @Query("SELECT * FROM FAV_DISHES_TABLE WHERE type = :filterType")
+    fun getFilteredDishesList(filterType: String): Flow<List<RecipeData>>
     // END
 }
