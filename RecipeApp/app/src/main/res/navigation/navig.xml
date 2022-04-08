@@ -9,15 +9,33 @@
         android:id="@+id/allRecipeFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.AllRecipeFragment"
         android:label="All Recipes"
-        tools:layout="@layout/fragment_all_recipe" />
+        tools:layout="@layout/fragment_all_recipe" >
+        <action
+            android:id="@+id/action_allRecipeFragment_to_dishDetailsFragment"
+            app:destination="@id/dishDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.FavoriteFragment"
         android:label="Favorite Recipes"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_dishDetailsFragment"
+            app:destination="@id/dishDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.DiscoverFragment"
         android:label="random Recipes"
         tools:layout="@layout/fragment_discover" />
+    <fragment
+        android:id="@+id/dishDetailsFragment"
+        android:name="com.hgecapsi.recipeapp.views.fragments.DishDetailsFragment"
+        android:label="fragment_dish_details"
+        tools:layout="@layout/fragment_dish_details">
+
+        <argument
+            android:name="dishDetails"
+            app:argType="com.hgecapsi.recipeprjectispace.model.entities.RecipeData"/>
+    </fragment>
 </navigation>

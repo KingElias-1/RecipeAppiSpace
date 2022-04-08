@@ -3,17 +3,19 @@ package com.hgecapsi.recipeapp.adapters
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hgecapsi.recipeapp.R
+import com.hgecapsi.recipeapp.data.RecipeData
 import com.hgecapsi.recipeapp.databinding.ItemDishLayoutBinding
+import com.hgecapsi.recipeapp.utils.Constants
 import com.hgecapsi.recipeapp.views.activities.AddDishActivity
 import com.hgecapsi.recipeapp.views.fragments.AllRecipeFragment
-import com.hgecapsi.recipeapp.data.RecipeData
-import com.hgecapsi.recipeapp.utils.Constants
+import com.hgecapsi.recipeapp.views.fragments.FavoriteFragment
 
 class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDishAdapter.ViewHolder>() {
     private var dishes: List<RecipeData> = listOf()
@@ -35,6 +37,26 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
             .into(holder.ivDishImage)
 
         holder.tvTitle.text = dish.title
+
+        // TODO Step 9: Assign the click event to the itemview and perform the required action.
+        // START
+        holder.itemView.setOnClickListener {
+            if (fragment is AllRecipeFragment) {
+                fragment.dishDetails(dish)
+            }else if (fragment is FavoriteFragment) {
+                fragment.dishDetails(dish)
+            }
+
+        }
+        // END
+        // TODO Step 7: We want the menu icon should be visible only in the AllDishesFragment not in the FavoriteDishesFragment so add the below to achieve it.
+        // START
+        if (fragment is AllRecipeFragment) {
+            holder.ibMore.visibility = View.VISIBLE
+        } else if (fragment is FavoriteFragment) {
+            holder.ibMore.visibility = View.GONE
+        }
+        // END
 
         holder.ibMore.setOnClickListener{
             //gonna make a pop-up menu
@@ -60,8 +82,7 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
                     // TODO Step 6: Remove the log and call the function that we have created to delete.
                     // START
                     if (fragment is AllRecipeFragment) {
-                        /*fragment.deleteStudent(dish)*/
- 
+                        fragment.deleteStudent(dish)
                     }
                     // END
 
@@ -97,4 +118,6 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
         val ibMore = view.ibMore
         // END
     }
+
+
 }

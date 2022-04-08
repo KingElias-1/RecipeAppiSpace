@@ -34,4 +34,8 @@
     <string name="msg_removed_from_favorite">removed from favorites</string>
     <string name="action_share_dish">Share DIsh</string>
     <string name="no_favorite_dish_added_yet">No Favorite Dish Added Yet</string>
+    <string name="title_delete_dish">Delete Recipe</string>
+    <string name="msg_delete_dish_dialog">Are you sure you wants to delete %1$s</string>
+    <string name="lbl_yes">Yes</string>
+    <string name="lbl_no">No</string>
 </resources>
