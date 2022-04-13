@@ -33,9 +33,8 @@
         android:name="com.hgecapsi.recipeapp.views.fragments.DishDetailsFragment"
         android:label="fragment_dish_details"
         tools:layout="@layout/fragment_dish_details">
-
         <argument
             android:name="dishDetails"
-            app:argType="com.hgecapsi.recipeprjectispace.model.entities.RecipeData"/>
+            app:argType="com.hgecapsi.recipeapp.data.RecipeData"/>
     </fragment>
 </navigation>

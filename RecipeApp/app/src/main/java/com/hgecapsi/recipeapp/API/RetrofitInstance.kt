@@ -20,4 +20,5 @@ interface RetrofitInstance {
     ): Single<RandomDish.Recipes> // The Single class implements the Reactive Pattern for a single value response. Click on the class using the Ctrl + Left Mouse Click to know more.
 
     // For more details have a look at http://reactivex.io/documentation/single.html or http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html
+
 }

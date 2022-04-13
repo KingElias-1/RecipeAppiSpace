@@ -10,6 +10,12 @@ object Constants {
 
         const val EXTRA_DISH_DETAILS: String = "DishDetails"
 
+    // TODO Step 6: Add Constants for filter on all recipe page
+    // START
+    const val ALL_ITEMS: String = "None"
+    const val FILTER_SELECTION: String = "FilterSelection"
+    // END
+
         /**
          * This function will return the Dish Type List items.
          */
@@ -88,7 +94,7 @@ object Constants {
     const val API_KEY_VALUE: String = "f6b01f9931d947c3a939ec1042de82cb"
 
     // KEY PARAMS
-    const val API_KEY: String = "f6b01f9931d947c3a939ec1042de82cb"
+    const val API_KEY: String = "apiKey"
     const val LIMIT_LICENSE: String = "limitLicense"
     const val TAGS: String = "tags"
     const val NUMBER: String = "number"

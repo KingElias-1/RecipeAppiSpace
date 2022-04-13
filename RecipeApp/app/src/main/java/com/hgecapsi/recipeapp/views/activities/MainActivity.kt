@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun hideBottomNavigationView() {
         mainBinding.bottomNav.clearAnimation()
-        mainBinding.bottomNav.animate().translationY(mainBinding.bottomNav.height.toFloat()).duration = 300
+        mainBinding.bottomNav.animate().translationY(mainBinding.bottomNav.height.toFloat()).duration = 600
         mainBinding.bottomNav.visibility = View.GONE
     }
 
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun showBottomNavigationView() {
         mainBinding.bottomNav.clearAnimation()
-        mainBinding.bottomNav.animate().translationY(0f).duration = 300
+        mainBinding.bottomNav.animate().translationY(0f).duration = 500
         mainBinding.bottomNav.visibility = View.VISIBLE
     }
     // END

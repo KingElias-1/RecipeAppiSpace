@@ -7,9 +7,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/_15sdp"
+    app:cardCornerRadius="@dimen/_15dp"
     app:cardElevation="@dimen/_4sdp"
-    app:cardUseCompatPadding="true">
+    android:layout_margin="@dimen/_4sdp">
+<!--    app:cardUseCompatPadding="true"
+can use this attribute for padding and margin combined
+without customization
+
+        app:cardElevation="@dimen/_4sdp"
+card elevation determines how high off the "ground" the
+card is so bigger card elevation = bigger shadow-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +36,6 @@
                 android:id="@+id/iv_dish_image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
-                android:layout_margin="@dimen/_1sdp"
                 android:contentDescription="@string/image_contentDescription"
                 android:scaleType="centerCrop"
                 tools:src="@mipmap/ic_launcher" />
@@ -50,7 +57,7 @@
             android:id="@+id/tv_dish_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_margin="@dimen/_5sdp"
             android:fontFamily="@font/poppins"
             style="@style/TextAppearance.AppCompat.Body1"
             android:gravity="center_vertical"

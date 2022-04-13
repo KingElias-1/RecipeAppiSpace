@@ -47,7 +47,7 @@ class DiscoverFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         disccoverBinding = FragmentDiscoverBinding.inflate(inflater, container,false)
-        return inflater.inflate(R.layout.fragment_discover, container, false)
+        return disccoverBinding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,6 +77,8 @@ class DiscoverFragment : Fragment() {
             // The method calls setRefreshing(false) when it's finished.
             mRandomDishViewModel.getRandomRecipeFromAPI()
         }
+
+
 
     }
 
@@ -139,6 +141,10 @@ class DiscoverFragment : Fragment() {
         })
     }
     // END
+
+
+
+
 
     /**
      * A method to populate the API response in the UI.

@@ -42,13 +42,15 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
         // START
         holder.itemView.setOnClickListener {
             if (fragment is AllRecipeFragment) {
-                fragment.dishDetails(dish)
+                fragment.goToDishDetails(dish)
             }else if (fragment is FavoriteFragment) {
-                fragment.dishDetails(dish)
+                fragment.goToDishDetails(dish)
             }
 
         }
         // END
+
+
         // TODO Step 7: We want the menu icon should be visible only in the AllDishesFragment not in the FavoriteDishesFragment so add the below to achieve it.
         // START
         if (fragment is AllRecipeFragment) {
@@ -57,6 +59,8 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
             holder.ibMore.visibility = View.GONE
         }
         // END
+
+
 
         holder.ibMore.setOnClickListener{
             //gonna make a pop-up menu

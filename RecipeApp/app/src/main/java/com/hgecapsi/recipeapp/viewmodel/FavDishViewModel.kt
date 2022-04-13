@@ -56,6 +56,17 @@ class FavDishViewModel(private val dishRepository: DishRepository):ViewModel() {
         dishRepository.updateFavDishData(recipeData)
     }
 // END
+
+    // TODO Step 3: Get the filtered list of dishes based on the dish type selection.
+    // START
+    /**
+     * A function to get the filtered list of dishes based on the dish type selection.
+     *
+     * @param value - dish type selection
+     */
+    fun getFilteredList(value: String): LiveData<List<RecipeData>> =
+        dishRepository.filteredListDishes(value).asLiveData()
+    // END
 }
 
 /**

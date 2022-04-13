@@ -1,9 +1,8 @@
 package com.hgecapsi.recipeapp.API
 
 object RandomDish {
-
     data class Recipes(
-    val recipes: List<Recipe> = listOf()
+        val recipes: List<Recipe> = listOf()
     )
 
     data class Recipe(
@@ -115,5 +114,4 @@ object RandomDish {
         val unitLong: String = "",
         val unitShort: String = ""
     )
-
 }

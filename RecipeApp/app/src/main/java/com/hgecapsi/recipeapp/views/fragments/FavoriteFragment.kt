@@ -92,7 +92,7 @@ class FavoriteFragment : Fragment() {
      *
      * @param favDish
      */
-    fun dishDetails(recipeData: RecipeData) {
+    fun goToDishDetails(recipeData: RecipeData) {
 
         // TODO Step 4: Hide the BottomNavigationView while navigating to the DetailsFragment.
         // START

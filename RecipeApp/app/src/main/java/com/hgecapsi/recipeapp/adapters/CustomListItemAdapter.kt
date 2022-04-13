@@ -3,12 +3,15 @@ package com.hgecapsi.recipeapp.adapters
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.hgecapsi.recipeapp.databinding.ItemCustomListLayoutBinding
 import com.hgecapsi.recipeapp.views.activities.AddDishActivity
+import com.hgecapsi.recipeapp.views.fragments.AllRecipeFragment
 
 class CustomListItemAdapter(
     private val activity: Activity,
+    private val fragment: Fragment?,
     private val listItems: List<String>,
     private val selection: String
 ) :
@@ -47,6 +50,11 @@ class CustomListItemAdapter(
             if (activity is AddDishActivity) {
                 activity.selectedListItem(item, selection)
             }
+            // TODO Step 9: Call the function and pass the required details.
+            if (fragment is AllRecipeFragment) {
+                fragment.filterSelection(item)
+            }
+
         }
     }
 

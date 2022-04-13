@@ -311,7 +311,7 @@ class AddDishActivity : AppCompatActivity(), View.OnClickListener {
         CustomDialogbinding.rvList.layoutManager = LinearLayoutManager(this@AddDishActivity)
 
         // Adapter class is initialized and list is passed in the param.
-        val adapter = CustomListItemAdapter(this@AddDishActivity, itemList, selection)
+        val adapter = CustomListItemAdapter(this@AddDishActivity, null, itemList, selection)
 
         // adapter instance is set to the recyclerview to inflate the items.
         CustomDialogbinding.rvList.adapter = adapter

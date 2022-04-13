@@ -1,19 +1,24 @@
 package com.hgecapsi.recipeapp.views.fragments
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hgecapsi.recipeapp.R
+import com.hgecapsi.recipeapp.adapters.CustomListItemAdapter
 import com.hgecapsi.recipeapp.adapters.FavDishAdapter
 import com.hgecapsi.recipeapp.application.FavDishApplication
 import com.hgecapsi.recipeapp.data.RecipeData
+import com.hgecapsi.recipeapp.databinding.DialogCustomListBinding
 import com.hgecapsi.recipeapp.databinding.FragmentAllRecipeBinding
+import com.hgecapsi.recipeapp.utils.Constants
 import com.hgecapsi.recipeapp.viewmodel.FavDishViewModel
 import com.hgecapsi.recipeapp.viewmodel.FavDishViewModelFactory
 import com.hgecapsi.recipeapp.views.activities.AddDishActivity
@@ -25,7 +30,10 @@ class AllRecipeFragment : Fragment() {
 
     private lateinit var mFavDishAdapter: FavDishAdapter
 
-    private lateinit var recyclerView: RecyclerView
+    // TODO Step 3: Make the CustomItemsListDialog as global instead of local as below.
+    // START
+    private lateinit var mCustomListDialog: Dialog
+    // END
 
     /**
      * To create the ViewModel we used the viewModels delegate, passing in an instance of our FavDishViewModelFactory.
@@ -91,6 +99,10 @@ class AllRecipeFragment : Fragment() {
         }
     }
 
+
+
+    //TODO top right option menu implementation
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.all_recipe_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -100,18 +112,116 @@ class AllRecipeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.addDish -> {
-                startActivity(Intent(requireActivity(), AddDishActivity::class.java))//using require activity instead of this for context cos of fragment
+                startActivity(Intent(requireActivity(), AddDishActivity::class.java))
+            //using require activity instead of this for context cos of fragment
+            }
+
+            R.id.filter -> {
+               filterOptionDialog()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+    //TODO(Have to create a function to display the filter tags and implement the filter)
+    private fun filterOptionDialog() {
+        mCustomListDialog = Dialog(requireActivity())
+
+        val binding: DialogCustomListBinding = DialogCustomListBinding.inflate(layoutInflater)
+
+        /*Set the screen content from a layout resource.
+        The resource will be inflated, adding all top-level views to the screen.*/
+        mCustomListDialog.setContentView(binding.root)
+
+        binding.tvTitle.text = resources.getString(R.string.title_select_item_to_filter)
+
+        val dishTypes = Constants.dishTypes()
+        // TODO Step 5: Add the 0 element to  get ALL items.
+        dishTypes.add(0, Constants.ALL_ITEMS)
+
+        // Set the LayoutManager that this RecyclerView will use.
+        binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
+        // Adapter class is initialized and list is passed in the param.
+        val adapter = CustomListItemAdapter(
+            requireActivity(),
+            this,
+            dishTypes,
+            Constants.FILTER_SELECTION
+        )
+        // adapter instance is set to the recyclerview to inflate the items.
+        binding.rvList.adapter = adapter
+        //Start the dialog and display it on screen.
+        mCustomListDialog.show()
+    }
+    //END
+
+
+
+
+    // TODO Step 5: Create a function to get the filter item selection and get the list from database accordingly.
+    // START
+    /**
+     * A function to get the filter item selection and get the list from database accordingly.
+     *
+     * @param filterItemSelection
+     */
+    fun filterSelection(filterItemSelection: String) {
+
+        mCustomListDialog.dismiss()
+
+        Log.i("Filter Selection", filterItemSelection)
+
+        if (filterItemSelection == Constants.ALL_ITEMS) {
+            mFavDishViewModel.allDishesList.observe(viewLifecycleOwner) { dishes ->
+                dishes.let {
+                    if (it.isNotEmpty()) {
+
+                        allRecipeFragmentBinding.rvDishesList.visibility = View.VISIBLE
+                        allRecipeFragmentBinding.tvNoDishesAddedYet.visibility = View.GONE
+
+                        mFavDishAdapter.dishesList(it)
+                    } else {
+
+                        allRecipeFragmentBinding.rvDishesList.visibility = View.GONE
+                        allRecipeFragmentBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
+                    }
+                }
+            }
+        } else {
+            Log.i("Filter List", "Get Filter List")
+            // TODO Step 4: Remove the log and replace it with filtered list as below.
+            // START
+            mFavDishViewModel.getFilteredList(filterItemSelection)
+                .observe(viewLifecycleOwner) { dishes ->
+                    dishes.let {
+                        if (it.isNotEmpty()) {
+
+                            allRecipeFragmentBinding.rvDishesList.visibility = View.VISIBLE
+                            allRecipeFragmentBinding.tvNoDishesAddedYet.visibility = View.GONE
+
+                            mFavDishAdapter.dishesList(it)
+                        } else {
+
+                            allRecipeFragmentBinding.rvDishesList.visibility = View.GONE
+                            allRecipeFragmentBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            // END
+
+        }
+    }
+    // END
+
 
 // TODO Step 8: Create a function to navigate to the Dish Details Fragment.
     // START
     /**
      * A function to navigate to the Dish Details Fragment.
      */
-    fun dishDetails(recipeData: RecipeData){
+    fun goToDishDetails(recipeData: RecipeData){
 
         // TODO Step 9: Call the hideBottomNavigationView function when user wants to navigate to the DishDetailsFragment.
         // START
@@ -123,10 +233,18 @@ class AllRecipeFragment : Fragment() {
         findNavController().navigate(
                 AllRecipeFragmentDirections.actionAllRecipeFragmentToDishDetailsFragment(recipeData)
         )
-//        findNavController().navigate(
-//            R.id.action_allRecipeFragment_to_dishDetailsFragment,null
-//        )
+    }
+    // END
 
+
+    // TODO Step 10: Override the onResume method and call the function to show the BottomNavigationView when user is on the AllDishesFragment.
+    // START
+    override fun onResume() {
+        super.onResume()
+
+        if(requireActivity() is MainActivity){
+            (activity as MainActivity?)!!.showBottomNavigationView()
+        }
     }
     // END
 
@@ -143,7 +261,7 @@ class AllRecipeFragment : Fragment() {
         builder.setTitle(resources.getString(R.string.title_delete_dish))
         //set message for alert dialog
         builder.setMessage(resources.getString(R.string.msg_delete_dish_dialog, recipeData.title))
-        builder.setIcon(android.R.drawable.ic_dialog_alert)
+        builder.setIcon(R.drawable.delete)
 
         //performing positive action
         builder.setPositiveButton(resources.getString(R.string.lbl_yes)) { dialogInterface, _ ->
@@ -159,17 +277,6 @@ class AllRecipeFragment : Fragment() {
         // Set other dialog properties
         alertDialog.setCancelable(false) // Will not allow user to cancel after clicking on remaining screen area.
         alertDialog.show()  // show the dialog to UI
-    }
-    // END
-
-    // TODO Step 10: Override the onResume method and call the function to show the BottomNavigationView when user is on the AllDishesFragment.
-    // START
-    override fun onResume() {
-        super.onResume()
-
-        if(requireActivity() is MainActivity){
-            (activity as MainActivity?)!!.showBottomNavigationView()
-        }
     }
     // END
 }
