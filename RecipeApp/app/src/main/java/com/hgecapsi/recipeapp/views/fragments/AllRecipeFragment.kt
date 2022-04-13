@@ -144,6 +144,7 @@ class AllRecipeFragment : Fragment() {
         // Set the LayoutManager that this RecyclerView will use.
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         // Adapter class is initialized and list is passed in the param.
+        //using the same adapter used in the ass recipe activity to choose category
         val adapter = CustomListItemAdapter(
             requireActivity(),
             this,
