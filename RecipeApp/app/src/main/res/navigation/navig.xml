@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/allRecipeFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.AllRecipeFragment"
-        android:label="All Recipes"
+        android:label="My Recipes"
         tools:layout="@layout/fragment_all_recipe" >
         <action
             android:id="@+id/action_allRecipeFragment_to_dishDetailsFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.FavoriteFragment"
-        android:label="Favorite Recipes"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorite" >
         <action
             android:id="@+id/action_favoriteFragment_to_dishDetailsFragment"
@@ -26,12 +26,12 @@
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.DiscoverFragment"
-        android:label="random Recipes"
+        android:label="Discover"
         tools:layout="@layout/fragment_discover" />
     <fragment
         android:id="@+id/dishDetailsFragment"
         android:name="com.hgecapsi.recipeapp.views.fragments.DishDetailsFragment"
-        android:label="fragment_dish_details"
+        android:label="Recipe"
         tools:layout="@layout/fragment_dish_details">
         <argument
             android:name="dishDetails"

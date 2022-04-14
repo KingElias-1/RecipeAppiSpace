@@ -130,7 +130,6 @@ class AllRecipeFragment : Fragment() {
         mCustomListDialog = Dialog(requireActivity())
 
         val binding: DialogCustomListBinding = DialogCustomListBinding.inflate(layoutInflater)
-
         /*Set the screen content from a layout resource.
         The resource will be inflated, adding all top-level views to the screen.*/
         mCustomListDialog.setContentView(binding.root)
