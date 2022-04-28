@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         ))
         setupActionBarWithNavController(mNavController, appBarConfiguration)
         mainBinding.bottomNav.setupWithNavController(mNavController)
+
         // TODO Step 19: Handle the Notification when user clicks on it.
         // START
         if (intent.hasExtra(Constants.NOTIFICATION_ID)) {
