@@ -58,7 +58,9 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
         } else if (fragment is FavoriteFragment) {
             holder.ibMore.visibility = View.GONE
         }
-        // END
+        // END Olorunfemi Elias Oyewole
+        //BSc/CS/2019/02632
+        //Mobile Systems and Application - End of Semester Exam
 
 
 
